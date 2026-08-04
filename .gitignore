@@ -1,0 +1,39 @@
+# Python & Virtual Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+
+# Large Model Checkpoints (>100MB file limit on GitHub)
+models/*.pt
+models/*.bin
+*.pth
+*.pt
+*.onnx
+
+# Dataset Caches & Heavy Output Features
+outputs/ast_cache/
+outputs/ast_pitch_cache/
+outputs/mel_cache/
+outputs/wavlm_audio_cache/
+outputs/*_cache/
+
+# Zip Archives & Dataset Downloads
+*.zip
+*.tar.gz
+*.7z
+Audio Wise V1.0-*/
+Metadata-*/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Scratch files
+scratch/
+create_word_paper.py

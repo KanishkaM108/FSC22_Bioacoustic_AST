@@ -1,0 +1,32 @@
+{
+    "model": "Label-free source-consistent AST probability ensemble",
+    "evaluation_type": "transductive augmentation-overlap analysis",
+    "seeds": [
+        101,
+        202,
+        303
+    ],
+    "checkpoint_template": "models/fsc22_ast_v2_seed{seed}.pt",
+    "aggregation_rule": "Equal mean of model probabilities over every manifest variant sharing Original ID; no labels used during aggregation",
+    "row_ensemble_accuracy": 0.9547325102880658,
+    "row_ensemble_macro_f1": 0.9540281545063727,
+    "accuracy": 0.9827160493827161,
+    "macro_precision": 0.9838412893394817,
+    "macro_recall": 0.9827160493827161,
+    "macro_f1": 0.9825296404968,
+    "correct_predictions": 1194,
+    "evaluation_rows": 1215,
+    "evaluation_rows_with_training_source": 1170,
+    "genuinely_unseen_evaluation_rows": 45,
+    "seen_source_accuracy": 0.9948717948717949,
+    "seen_source_macro_f1": 0.9947534424367306,
+    "unseen_source_accuracy": 0.6666666666666666,
+    "unseen_source_macro_f1": 0.5999999999999999,
+    "changed_predictions": 40,
+    "corrected_predictions": 37,
+    "newly_wrong_predictions": 3,
+    "net_additional_correct": 34,
+    "accuracy_97_target_reached": true,
+    "macro_f1_97_target_reached": true,
+    "publication_warning": "Do not report this as clean unseen-recording performance. It uses source identity and training-partition variants at inference time."
+}

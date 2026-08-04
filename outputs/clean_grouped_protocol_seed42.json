@@ -1,0 +1,42 @@
+{
+    "name": "FSC22 clean source-grouped protocol",
+    "split_unit": "FreeSound source recording derived from Source File Name",
+    "split_method": "nested StratifiedGroupKFold (outer test, inner validation)",
+    "seed": 42,
+    "outer_fold": 0,
+    "inner_fold": 0,
+    "original_clips": 2025,
+    "source_groups": 1946,
+    "multi_class_source_groups": 1,
+    "clip_counts": {
+        "test": 405,
+        "train": 1296,
+        "validation": 324
+    },
+    "variant_counts": {
+        "test": 1215,
+        "train": 3888,
+        "validation": 972
+    },
+    "class_count_ranges": {
+        "test": {
+            "minimum": 15,
+            "maximum": 15
+        },
+        "train": {
+            "minimum": 48,
+            "maximum": 48
+        },
+        "validation": {
+            "minimum": 12,
+            "maximum": 12
+        }
+    },
+    "source_group_overlaps": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+    },
+    "augmentation_policy": "All variants inherit the split of their source recording; training uses variants, validation/test variants are TTA only",
+    "test_lock": "Test labels must not be used for model selection, calibration, thresholding, class weighting, or ensemble weighting"
+}

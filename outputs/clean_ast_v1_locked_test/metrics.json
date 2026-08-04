@@ -1,0 +1,42 @@
+{
+    "model": "Three-seed AST ensemble with unseen-clip TTA",
+    "evaluation_type": "locked source-disjoint test",
+    "manifest": "C:\\Users\\Kanishka\\Downloads\\FSC22_Research\\outputs\\clean_grouped_manifest_seed42.csv",
+    "seeds": [
+        101,
+        202,
+        303
+    ],
+    "checkpoint_template": "models/fsc22_clean_ast_v1_seed{seed}.pt",
+    "ensemble_rule": "equal probability mean fixed before test inference",
+    "tta_rule": "equal probability mean over original and pitch +/-2 views",
+    "test_original_clips": 405,
+    "test_source_groups": 389,
+    "test_source_overlap": 0,
+    "correct_predictions": 354,
+    "per_seed_metrics": {
+        "101": {
+            "accuracy": 0.8592592592592593,
+            "macro_precision": 0.8694058130074642,
+            "macro_recall": 0.8592592592592594,
+            "macro_f1": 0.8600488896789736
+        },
+        "202": {
+            "accuracy": 0.8592592592592593,
+            "macro_precision": 0.8646318973933353,
+            "macro_recall": 0.8592592592592594,
+            "macro_f1": 0.8592668823331494
+        },
+        "303": {
+            "accuracy": 0.8641975308641975,
+            "macro_precision": 0.8687735255545712,
+            "macro_recall": 0.8641975308641976,
+            "macro_f1": 0.8639257775355497
+        }
+    },
+    "accuracy": 0.8740740740740741,
+    "macro_precision": 0.8809687740243296,
+    "macro_recall": 0.8740740740740741,
+    "macro_f1": 0.8753500956442496,
+    "integrity_note": "Test groups are absent from training and validation. No test label was used for checkpoint, calibration, threshold, or ensemble selection."
+}
