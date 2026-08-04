@@ -21,6 +21,12 @@ outputs/mel_cache/
 outputs/wavlm_audio_cache/
 outputs/*_cache/
 
+# Research Paper Documents (Kept Private)
+*.docx
+*.doc
+*paper*.md
+fsc22_research_paper.md
+
 # Zip Archives & Dataset Downloads
 *.zip
 *.tar.gz
