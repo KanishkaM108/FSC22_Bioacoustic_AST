@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bow Bow Pet Resort - Smart Monitoring Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">🐾</div>
+        <div>
+          <h1 class="brand-title">Bow Bow Pet Resort</h1>
+          <p class="brand-subtitle">Real-time IoT Location, Feeding & Hydration Telemetry System</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="openAddPetModal()">➕ Add Pet</button>
+        <button class="btn btn-secondary" id="sim-btn" onclick="toggleSimulation()">⚡ Start IoT Simulation</button>
+        <button class="btn btn-secondary" onclick="fetchDashboardData()">🔄 Refresh</button>
+        <button class="btn btn-danger" onclick="resetDailyCare()">🌅 Reset Daily</button>
+      </div>
+    </header>
+
+    <!-- Metrics -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon icon-blue">🐶</div>
+        <div>
+          <div class="metric-value" id="metric-total">0</div>
+          <div class="metric-label">Total Registered Pets</div>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon icon-green">🍲</div>
+        <div>
+          <div class="metric-value" id="metric-fed">0/0</div>
+          <div class="metric-label">Fed Today</div>
+          <span class="metric-badge badge-success" id="badge-fed">% 0</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon icon-purple">💧</div>
+        <div>
+          <div class="metric-value" id="metric-hydrated">0/0</div>
+          <div class="metric-label">Hydrated Today</div>
+          <span class="metric-badge badge-success" id="badge-hydrated">% 0</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon icon-amber">⚠️</div>
+        <div>
+          <div class="metric-value" id="metric-attention">0</div>
+          <div class="metric-label">Attention Required</div>
+          <span class="metric-badge badge-warning" id="badge-attention">0 Pets</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="dashboard-grid">
+      <!-- Left Column: Zone Map & Pet Monitor -->
+      <div class="main-content-column">
+        <!-- Zone Visualizer -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">📍 Real-time Resort Zones</h2>
+            <span style="font-size:0.85rem; color:var(--text-muted);">RFID / BLE Receiver Triangulation</span>
+          </div>
+          <div class="zone-grid" id="zone-grid-container">
+            <!-- Dynamic Zone Cards -->
+          </div>
+        </div>
+
+        <!-- Pet Monitor Section -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">🐕 Pet Monitoring Cards</h2>
+          </div>
+
+          <!-- Filter & Search Bar -->
+          <div class="filter-bar">
+            <input type="text" id="search-input" class="search-input" placeholder="🔍 Search pet name, ID or breed..." oninput="applyFilters()">
+            <select id="zone-filter" class="select-input" onchange="applyFilters()">
+              <option value="ALL">All Zones</option>
+              <option value="Room">Room</option>
+              <option value="Hall">Hall</option>
+              <option value="Garden">Garden</option>
+              <option value="Food Area">Food Area</option>
+              <option value="Washroom">Washroom</option>
+              <option value="Out of Camera Range">Out of Range</option>
+            </select>
+            <select id="status-filter" class="select-input" onchange="applyFilters()">
+              <option value="ALL">All Care Status</option>
+              <option value="Normal">Normal</option>
+              <option value="Needs Water">Needs Water</option>
+              <option value="Meal Pending">Meal Pending</option>
+              <option value="Attention">Attention Required</option>
+            </select>
+          </div>
+
+          <!-- Pet Cards Container -->
+          <div class="pets-cards-container" id="pets-container">
+            <!-- Dynamic Pet Cards -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Analytics & Activity Stream -->
+      <div class="side-content-column">
+        <!-- Charts Card -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">📊 Care Completion Analytics</h2>
+          </div>
+          <div style="height: 220px; position: relative; margin-bottom: 20px;">
+            <canvas id="careChart"></canvas>
+          </div>
+          <div style="height: 200px; position: relative;">
+            <canvas id="zoneChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Live Activity History Log -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">🕒 Real-time Telemetry Log</h2>
+            <button class="btn btn-sm btn-secondary" onclick="fetchLogs()">🔄</button>
+          </div>
+          <div style="max-height: 400px; overflow-y: auto;">
+            <table id="logs-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Pet</th>
+                  <th>Event</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody id="logs-body">
+                <!-- Dynamic Activity Rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Add Pet -->
+  <div class="modal-overlay" id="addPetModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>➕ Register New Pet</h3>
+        <button class="btn btn-sm btn-secondary" onclick="closeModal('addPetModal')">✕</button>
+      </div>
+      <form id="addPetForm" onsubmit="handleAddPet(event)">
+        <div class="form-group">
+          <label>Pet Name</label>
+          <input type="text" id="new-name" required placeholder="e.g. Charlie">
+        </div>
+        <div class="form-group">
+          <label>Breed</label>
+          <input type="text" id="new-breed" placeholder="e.g. Beagle">
+        </div>
+        <div class="form-group">
+          <label>Age (Years)</label>
+          <input type="number" id="new-age" value="3" min="1" max="20">
+        </div>
+        <div class="form-group">
+          <label>Initial Zone</label>
+          <select id="new-zone">
+            <option value="Room">Room</option>
+            <option value="Hall">Hall</option>
+            <option value="Garden">Garden</option>
+            <option value="Food Area">Food Area</option>
+            <option value="Washroom">Washroom</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('addPetModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Pet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Action (Feed/Water/Zone) -->
+  <div class="modal-overlay" id="actionModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="action-modal-title">Manual Care Update</h3>
+        <button class="btn btn-sm btn-secondary" onclick="closeModal('actionModal')">✕</button>
+      </div>
+      <form id="actionForm" onsubmit="handleActionSubmit(event)">
+        <input type="hidden" id="action-pet-id">
+        <input type="hidden" id="action-type">
+        
+        <div id="action-input-container" class="form-group">
+          <label id="action-label">Quantity</label>
+          <input type="number" id="action-value-num" value="150" min="10">
+        </div>
+
+        <div id="zone-select-container" class="form-group" style="display:none;">
+          <label>Select Resort Zone</label>
+          <select id="action-value-zone">
+            <option value="Room">Room</option>
+            <option value="Hall">Hall</option>
+            <option value="Garden">Garden</option>
+            <option value="Food Area">Food Area</option>
+            <option value="Washroom">Washroom</option>
+            <option value="Out of Camera Range">Out of Camera Range</option>
+          </select>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('actionModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -6,9 +6,9 @@ def create_master_notebook():
     nb = nbf.v4.new_notebook()
 
     # Notebook Title & Colab Badge
-    cell1_md = """# 🌿 Source-Disjoint Audio Spectrogram Transformers with Consistency Regularization for Bioacoustic Sound Classification
+    cell1_md = r"""# 🌿 Source-Disjoint Audio Spectrogram Transformers with Consistency Regularization for Bioacoustic Sound Classification
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Master_Notebook.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb)
 [![Paper Docx](https://img.shields.io/badge/Research_Paper-DOCX_Download-2B579A?logo=microsoftword)](https://github.com/KanishkaM108/FSC22_Bioacoustic_AST/raw/main/FSC22_Bioacoustic_AST_Research_Paper.docx)
 
 ## 📌 Executive Summary & Abstract
@@ -19,18 +19,20 @@ In this notebook, we provide the complete end-to-end implementation for:
 2. **Audio Spectrogram Transformer (AST)** fine-tuning with differential learning rates across 8 unfrozen encoder blocks.
 3. **Multi-Task Loss Formulation**: Focal-Smoothed Cross-Entropy + Symmetric Jensen-Shannon Logit Divergence + Cosine Embedding Distance.
 4. **Comprehensive Research Tables & Colorful Visualizations**: Table 1 (Literature Survey without DOI), Table 2 (Partition Statistics), Table 3 (Performance Comparison), Table 4 (Ablation Study), and Figures 1-7.
+
+ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb
 """
     nb.cells.append(nbf.v4.new_markdown_cell(cell1_md))
 
     # Cell 2: Package Installation
-    cell2_code = """# Step 1: Environment Setup & Library Installation
+    cell2_code = r"""# Step 1: Environment Setup & Library Installation
 !pip install -q transformers torchaudio scikit-learn matplotlib seaborn pandas numpy librosa timm
 print("✅ Libraries successfully installed!")
 """
     nb.cells.append(nbf.v4.new_code_cell(cell2_code))
 
     # Cell 3: Imports & System Config
-    cell3_code = """# Step 2: System Configuration & Reproducibility Setup
+    cell3_code = r"""# Step 2: System Configuration & Reproducibility Setup
 import os
 import math
 import random
@@ -64,12 +66,12 @@ print(f"🚀 Execution Device: {device}")
     nb.cells.append(nbf.v4.new_code_cell(cell3_code))
 
     # Cell 4: Data Partitioning Protocol
-    cell4_md = """## 📊 Section 1: FSC22 Source-Disjoint Data Partitioning Protocol
+    cell4_md = r"""## 📊 Section 1: FSC22 Source-Disjoint Data Partitioning Protocol
 To audit data leakage, parent audio recording sources (e.g. stem prefix of `17548_A.wav` -> `17548`) are grouped using `StratifiedGroupKFold`. All pitch variants (`original`, `pitch_down_2`, `pitch_up_2`) strictly inherit parent group assignments.
 """
     nb.cells.append(nbf.v4.new_markdown_cell(cell4_md))
 
-    cell5_code = """# Step 3: Source-Disjoint Split Statistics Table (Table 2)
+    cell5_code = r"""# Step 3: Source-Disjoint Split Statistics Table (Table 2)
 t2_data = {
     "Split Partition": ["Train Split", "Validation Split", "Locked Test Split", "Total Benchmark"],
     "Original Audio Clips": [1296, 324, 405, 2025],
@@ -90,7 +92,7 @@ $$L_{total} = L_{focal} + \alpha \cdot L_{JS} + \beta \cdot L_{cos}$$
 """
     nb.cells.append(nbf.v4.new_markdown_cell(cell6_md))
 
-    cell7_code = """class FocalConsistencyLoss(nn.Module):
+    cell7_code = r"""class FocalConsistencyLoss(nn.Module):
     def __init__(self, gamma=1.25, alpha=0.20, beta=0.05, label_smoothing=0.04):
         super().__init__()
         self.gamma = gamma
@@ -126,10 +128,10 @@ print("✅ FocalConsistencyLoss Module Instantiated Successfully!")
     nb.cells.append(nbf.v4.new_code_cell(cell7_code))
 
     # Cell 8: Research Tables (Table 1 without DOI, Table 3, Table 4)
-    cell8_md = """## 📑 Section 3: Literature Survey, Main Results & Ablation Tables"""
+    cell8_md = r"""## 📑 Section 3: Literature Survey, Main Results & Ablation Tables"""
     nb.cells.append(nbf.v4.new_markdown_cell(cell8_md))
 
-    cell9_code = """# Table 1: Literature Survey (DOI Column Removed)
+    cell9_code = r"""# Table 1: Literature Survey (DOI Column Removed)
 t1_data = {
     "Study": ["Gong et al. (2021)", "Chen et al. (2022)", "Chen et al. (2022)", "Kong et al. (2020)", "Fonseca et al. (2021)", "Lin et al. (2022)", "Tarvainen & Valpola (2017)", "Lin et al. (2017)"],
     "Core Mechanism": ["Audio Spectrogram Transformer (AST)", "AudioMAE (Masked Autoencoders)", "WavLM Self-Supervised Model", "PANNs Audio Backbones", "FSD50K Dataset Baselines", "FSC22 Benchmark Dataset", "Mean Teacher Consistency", "Focal Loss Formulation"],
@@ -172,7 +174,7 @@ display(df_t4)
     nb.cells.append(nbf.v4.new_code_cell(cell9_code))
 
     # Cell 10: Visualizations & Colorful Graphs
-    cell10_md = """## 🎨 Section 4: High-Resolution Vibrant Visualizations & Graphs"""
+    cell10_md = r"""## 🎨 Section 4: High-Resolution Vibrant Visualizations & Graphs"""
     nb.cells.append(nbf.v4.new_markdown_cell(cell10_md))
 
     cell11_code = r"""# Figure 1: Performance Comparison Bar Chart
@@ -206,7 +208,7 @@ plt.show()
 """
     nb.cells.append(nbf.v4.new_code_cell(cell11_code))
 
-    cell12_code = """# Figure 2: Ablation Study Dual Plot
+    cell12_code = r"""# Figure 2: Ablation Study Dual Plot
 blocks = ['4 Blocks', '6 Blocks', '8 Blocks (Selected)']
 val_acc = [84.26, 86.11, 87.65]
 val_f1  = [83.95, 85.80, 87.35]
@@ -243,7 +245,7 @@ plt.show()
 """
     nb.cells.append(nbf.v4.new_code_cell(cell12_code))
 
-    cell13_code = """# Figure 3: Loss Convergence Dynamics
+    cell13_code = r"""# Figure 3: Loss Convergence Dynamics
 epochs = np.arange(1, 11)
 train_loss = [2.85, 2.15, 1.62, 1.25, 0.94, 0.71, 0.53, 0.41, 0.33, 0.28]
 val_loss   = [2.40, 1.82, 1.38, 1.05, 0.81, 0.67, 0.58, 0.52, 0.49, 0.47]
@@ -274,10 +276,16 @@ plt.show()
 """
     nb.cells.append(nbf.v4.new_code_cell(cell13_code))
 
-    target_notebook = Path(r"c:\Users\Kanishka\Downloads\FSC22_Research\FSC22_Bioacoustic_AST_Master_Notebook.ipynb")
-    with open(target_notebook, "w", encoding="utf-8") as f:
+    # Save both filenames for complete compatibility
+    p1 = Path(r"c:\Users\Kanishka\Downloads\FSC22_Research\FSC22_Bioacoustic_AST_Master_Notebook.ipynb")
+    p2 = Path(r"c:\Users\Kanishka\Downloads\FSC22_Research\FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb")
+    
+    with open(p1, "w", encoding="utf-8") as f:
         nbf.write(nb, f)
-    print(f"SUCCESS: Master notebook created at {target_notebook}")
+    with open(p2, "w", encoding="utf-8") as f:
+        nbf.write(nb, f)
+        
+    print(f"SUCCESS: Notebook saved to {p1} and {p2}")
 
 if __name__ == "__main__":
     create_master_notebook()

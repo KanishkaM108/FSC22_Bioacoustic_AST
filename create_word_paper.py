@@ -134,7 +134,7 @@ def build_final_word_document():
     )
     r_colab_desc.font.size = Pt(9.5)
     
-    r_link = cp.add_run("🔗 Google Colab Link: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Master_Notebook.ipynb")
+    r_link = cp.add_run("🔗 ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb")
     r_link.bold = True
     r_link.font.size = Pt(9.5)
     r_link.font.color.rgb = RGBColor(0x25, 0x63, 0xEB)

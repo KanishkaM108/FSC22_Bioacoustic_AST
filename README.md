@@ -1,18 +1,17 @@
 # Source-Disjoint Audio Spectrogram Transformers with Consistency Regularization for Bioacoustic Sound Classification
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Master_Notebook.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb)
 [![Paper Docx](https://img.shields.io/badge/Research_Paper-DOCX_Download-2B579A?logo=microsoftword)](FSC22_Bioacoustic_AST_Research_Paper.docx)
 [![Python 3.10](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 
-Official implementation, complete research paper document (`FSC22_Bioacoustic_AST_Research_Paper.docx`), and interactive Google Colab Master Notebook for the **Source-Disjoint Audio Spectrogram Transformer (AST)** framework on the Field Sound Classification 2022 (**FSC22**) bioacoustic benchmark dataset.
+Official implementation, complete research paper document (`FSC22_Bioacoustic_AST_Research_Paper.docx`), and Google Colab Notebook for the **Source-Disjoint Audio Spectrogram Transformer (AST)** framework on the Field Sound Classification 2022 (**FSC22**) bioacoustic benchmark dataset.
 
 ---
 
-## 🚀 Open in Google Colab
-All experimental data split generation, Audio Spectrogram Transformer model fine-tuning, consistency regularization multi-task loss dynamics, evaluation tables, and high-resolution colorful visualizations are fully executable in Google Colab:
+## 🚀 Interactive Google Colab Access
 
-👉 **[Launch Interactive Google Colab Notebook](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Master_Notebook.ipynb)**
+ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb
 
 ---
 
@@ -102,15 +101,16 @@ python build_master_colab_notebook.py
 
 ```text
 FSC22_Bioacoustic_AST/
-├── FSC22_Bioacoustic_AST_Master_Notebook.ipynb  # Complete Google Colab Master Notebook
-├── FSC22_Bioacoustic_AST_Research_Paper.docx    # Ready-to-submit Word Document Research Paper
-├── generate_colorful_graphs.py                  # High-res colorful graph generator
-├── create_word_paper.py                         # Word document builder with embedded figures & tables
-├── build_master_colab_notebook.py              # Google Colab notebook builder
-├── src/                                         # PyTorch model training & evaluation scripts
-├── outputs/graphs/                              # High-resolution PNG figures & plots
-├── requirements.txt                             # Python requirements
-└── README.md                                    # Project documentation
+├── FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb  # Main Google Colab Notebook
+├── FSC22_Bioacoustic_AST_Master_Notebook.ipynb          # Master Google Colab Notebook
+├── FSC22_Bioacoustic_AST_Research_Paper.docx            # Ready-to-submit Word Document Research Paper
+├── generate_colorful_graphs.py                          # High-res colorful graph generator
+├── create_word_paper.py                                 # Word document builder with embedded figures & tables
+├── build_master_colab_notebook.py                      # Google Colab notebook builder
+├── src/                                                 # PyTorch model training & evaluation scripts
+├── outputs/graphs/                                      # High-resolution PNG figures & plots
+├── requirements.txt                                     # Python requirements
+└── README.md                                            # Project documentation
 ```
 
 ---
