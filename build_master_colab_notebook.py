@@ -16,8 +16,6 @@ In this notebook, we provide the complete end-to-end implementation for:
 2. **Audio Spectrogram Transformer (AST)** fine-tuning with differential learning rates across 8 unfrozen encoder blocks.
 3. **Multi-Task Loss Formulation**: Focal-Smoothed Cross-Entropy + Symmetric Jensen-Shannon Logit Divergence + Cosine Embedding Distance.
 4. **Comprehensive Research Tables & Visualizations**: Table 1 (Literature Survey without DOI), Table 2 (Partition Statistics), Table 3 (Performance Comparison), Table 4 (Ablation Study), and Figures 1-7.
-
-ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb
 """
     nb.cells.append(nbf.v4.new_markdown_cell(cell1_md))
 
