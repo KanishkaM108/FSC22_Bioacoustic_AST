@@ -15,7 +15,7 @@ In this notebook, we provide the complete end-to-end implementation for:
 1. **Source-Disjoint Evaluation Protocol**: Outer/Inner `StratifiedGroupKFold` partitioning locking 405 unseen clips across 389 independent source groups.
 2. **Audio Spectrogram Transformer (AST)** fine-tuning with differential learning rates across 8 unfrozen encoder blocks.
 3. **Multi-Task Loss Formulation**: Focal-Smoothed Cross-Entropy + Symmetric Jensen-Shannon Logit Divergence + Cosine Embedding Distance.
-4. **Comprehensive Research Tables & Visualizations**: Table 1 (Literature Survey without DOI), Table 2 (Partition Statistics), Table 3 (Performance Comparison), Table 4 (Ablation Study), and Figures 1-7.
+4. **Comprehensive Research Tables & Visualizations**: Table 1 (26-study Literature Survey without DOI), Table 2 (Partition Statistics), Table 3 (Performance Comparison), Table 4 (Ablation Study), and Figures 1-3.
 """
     nb.cells.append(nbf.v4.new_markdown_cell(cell1_md))
 
@@ -35,7 +35,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -122,19 +121,54 @@ print("FocalConsistencyLoss Module Instantiated Successfully!")
 """
     nb.cells.append(nbf.v4.new_code_cell(cell7_code))
 
-    # Cell 8: Research Tables (Table 1 without DOI, Table 3, Table 4)
+    # Cell 8: Research Tables (Table 1 with 26 studies, Table 3, Table 4)
     cell8_md = r"""## Section 3: Literature Survey, Main Results & Ablation Tables"""
     nb.cells.append(nbf.v4.new_markdown_cell(cell8_md))
 
-    cell9_code = r"""# Table 1: Literature Survey (DOI Column Removed)
+    cell9_code = r"""# Table 1: Comparative Literature Survey (All 26 Studies, DOI Column Excluded)
 t1_data = {
-    "Study": ["Gong et al. (2021)", "Chen et al. (2022)", "Chen et al. (2022)", "Kong et al. (2020)", "Fonseca et al. (2021)", "Lin et al. (2022)", "Tarvainen & Valpola (2017)", "Lin et al. (2017)"],
-    "Core Mechanism": ["Audio Spectrogram Transformer (AST)", "AudioMAE (Masked Autoencoders)", "WavLM Self-Supervised Model", "PANNs Audio Backbones", "FSD50K Dataset Baselines", "FSC22 Benchmark Dataset", "Mean Teacher Consistency", "Focal Loss Formulation"],
-    "Main Contribution": ["First attention-based audio classifier", "Masked autoencoder audio pretraining", "Full audio self-supervised transformer", "CNN14 & Wavegram benchmarks", "Multi-label audio baseline evaluation", "FSC22 27-class bioacoustic benchmark", "Teacher-student consistency loss", "Focal loss for imbalanced targets"],
-    "Gap Relative to Proposed Work": ["Standard clip-level split", "High compute, no group audit", "Optimized for speech tasks", "Acoustic room impulse leakage", "Lacks consistency regularization", "Augmentation-before-split protocol", "No frequency-time shift TTA", "Lacks bioacoustic adaptation"]
+    "Study": [
+        "[1] Gong et al. (2021)", "[2] Chen et al. (2022)", "[3] Chen et al. (2022)", "[4] Kong et al. (2020)",
+        "[5] Fonseca et al. (2021)", "[6] Lin et al. (2022)", "[7] Tarvainen & Valpola (2017)", "[8] Lin et al. (2017)",
+        "[9] Dosovitskiy et al. (2021)", "[10] Hershey et al. (2017)", "[11] Gemmeke et al. (2017)", "[12] Salamon & Bello (2017)",
+        "[13] Piczak (2015)", "[14] Park et al. (2019)", "[15] Loshchilov & Hutter (2019)", "[16] Pedregosa et al. (2011)",
+        "[17] Paszke et al. (2019)", "[18] Wolf et al. (2020)", "[19] Stowell (2022)", "[20] Kahl et al. (2021)",
+        "[21] Baevski et al. (2020)", "[22] Nanni et al. (2021)", "[23] Mac Aodha et al. (2019)", "[24] Hendrycks & Gimpel (2016)",
+        "[25] He et al. (2016)", "[26] Kingma & Ba (2015)"
+    ],
+    "Core Mechanism": [
+        "Audio Spectrogram Transformer (AST)", "AudioMAE (Masked Autoencoders)", "WavLM Self-Supervised Model", "PANNs Pretrained Audio Networks",
+        "FSD50K Open Dataset & Baselines", "FSC22 Field Sound Benchmark Dataset", "Mean Teacher Consistency Regularization", "Focal Loss for Object Detection",
+        "Vision Transformer (ViT) Architecture", "Deep CNN Architectures for Audio", "AudioSet Large-Scale Ontology", "Environmental Sound Classification CNN",
+        "ESC-50 & ESC-10 Environmental Datasets", "SpecAugment Spectrogram Augmentation", "Decoupled Weight Decay (AdamW)", "Scikit-Learn Machine Learning Toolkit",
+        "PyTorch Deep Learning Framework", "Hugging Face Transformers Library", "Computational Bioacoustics Review", "BirdNET Avian Identification Model",
+        "wav2vec 2.0 Self-Supervised Speech Model", "Bioacoustic Data Augmentation Approaches", "Presence-Only Prior Networks for Species", "GELU Activation Function",
+        "Deep Residual Learning (ResNet)", "Adam Optimization Algorithm"
+    ],
+    "Main Contribution": [
+        "First purely attention-based audio classifier pretrained on ImageNet and AudioSet.", "Self-supervised masked autoencoder pretraining for audio spectrogram representations.", "Transformer model pretrained on full audio with gated relative position bias.", "Benchmark CNN architectures (Cnn14, Wavegram-Logmel) for general audio pattern recognition.",
+        "Multi-label audio dataset with crowdsourced annotations and baseline CNNs.", "Introduced the FSC22 27-class bioacoustic and environmental sound benchmark.", "Consistency loss between teacher and student predictions under stochastic views.", "Modulates cross-entropy loss to focus training on hard negative examples.",
+        "Applies self-attention directly to 16x16 image patch sequences at scale.", "Evaluates VGG-ish and ResNet architectures pretrained on large-scale YouTube audio.", "Established the 2-million clip AudioSet taxonomy for general sound classification.", "Evaluates data augmentation impact on environmental sound datasets (UrbanSound8K).",
+        "Standard 50-class environmental audio benchmark dataset with baseline CNNs.", "Frequency and time channel masking applied directly to log-Mel spectrogram inputs.", "Decouples weight decay regularization from gradient update calculation in Adam.", "Provides standard StratifiedGroupKFold, cross-validation metrics, and classifiers.",
+        "Imperative tensor library supporting automatic differentiation and mixed precision (FP16).", "Standardized API for loading pretrained self-attention models and weight checkpoints.", "Survey of deep learning algorithms and evaluation practices in bioacoustic monitoring.", "ResNet-based classifier trained on large-scale avian vocalization audio recordings.",
+        "Learns latent speech representations from raw audio via contrastive task.", "Evaluates acoustic pitch-shifting, time-stretching, and noise injection for animal sounds.", "Combines geographic location metadata with audio classifiers for species identification.", "Smooth, non-linear activation weighting inputs by their probability under Gaussian distribution.",
+        "Introduces shortcut residual connections enabling stable training of ultra-deep networks.", "First-order gradient-based optimization of stochastic objective functions with adaptive moments."
+    ],
+    "Gap Relative to Proposed Work": [
+        "Evaluated primarily on standard clip-level random splits; does not explicitly partition multi-segment source recordings.", "High computation requirement; does not address transductive augmentation overlap across recording hardware.", "Optimized primarily for speech tasks; downstream environmental audio fine-tuning prone to background noise memorization without grouping.", "Standard frame and clip sampling causes acoustic environment leakage across splits.",
+        "Focuses on multi-label evaluation but lacks source-consistent logit and embedding loss constraints.", "Baseline models evaluated on augmentation-before-split protocol, resulting in transductive performance estimates.", "Originally designed for computer vision; lacks bioacoustic frequency-time shift TTA integration.", "Applied in computer vision; needs adaptation to bioacoustic imbalanced sound event classification.",
+        "Operates on 2D visual domains; requires log-Mel spectrogram mapping for 1D time-series acoustic signals.", "Uses standard clip sampling without auditing for recording device and impulse response memorization.", "General-domain audio ontology; lacks fine-grained source-disjoint bioacoustic partitioning protocols.", "Augmentation techniques evaluated on standard random fold splits without grouping original source recordings.",
+        "Pre-defined 5-fold cross-validation folds do not isolate pitch-augmented views across custom source groups.", "Designed as a data augmentation pipeline; does not enforce embedding or logit consistency loss across views.", "Optimization algorithm; requires task-specific differential learning rate tuning across transformer blocks.", "Provides foundational data splitting primitives; requires custom source identifier extraction for audio datasets.",
+        "Core computational framework; requires custom dataset loaders for source-paired minibatch sampling.", "Model registry infrastructure; requires custom fine-tuning loops to enforce joint classification and consistency loss.", "Identifies data leakage as a major open challenge but does not provide benchmark code for FSC22.", "Tailored specifically to bird species; performance drops when applied to broader environmental sound classes.",
+        "Pretrained on human speech signals; less optimal for high-frequency wildlife and environmental sound events.", "Analyzes augmentation techniques but evaluates them on standard non-grouped cross-validation splits.", "Relies on geographic GPS coordinates; not applicable to anonymous or lab-recorded benchmark datasets.", "Neural activation function; used within transformer blocks but does not resolve data leakage across splits.",
+        "Convolutional baseline architecture; exhibits lower capacity than self-attention vision transformers on audio tokens.", "Standard optimization algorithm; requires weight decay decoupling (AdamW) for transformer fine-tuning."
+    ]
 }
 df_t1 = pd.DataFrame(t1_data)
-print("=== Table 1: Literature Survey Summary (DOI Column Excluded) ===")
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_colwidth', None)
+
+print("=== Table 1: Comparative Literature Survey of Audio Classification Models, Data Splitting Methodologies, and Optimization Strategies ===")
 display(df_t1)
 
 # Table 3: Performance Comparison
@@ -271,7 +305,7 @@ plt.show()
 """
     nb.cells.append(nbf.v4.new_code_cell(cell13_code))
 
-    # Save both filenames for complete compatibility
+    # Save both notebook files
     p1 = Path(r"c:\Users\Kanishka\Downloads\FSC22_Research\FSC22_Bioacoustic_AST_Master_Notebook.ipynb")
     p2 = Path(r"c:\Users\Kanishka\Downloads\FSC22_Research\FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb")
     
@@ -280,7 +314,7 @@ plt.show()
     with open(p2, "w", encoding="utf-8") as f:
         nbf.write(nb, f)
         
-    print(f"SUCCESS: Notebook saved to {p1} and {p2}")
+    print(f"SUCCESS: Master notebook regenerated and saved to:\n- {p1}\n- {p2}")
 
 if __name__ == "__main__":
     create_master_notebook()
