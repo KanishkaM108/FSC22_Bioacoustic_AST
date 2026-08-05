@@ -123,18 +123,18 @@ def build_final_word_document():
     
     cp = c_cell.paragraphs[0]
     cp.paragraph_format.space_after = Pt(4)
-    r_hdr = cp.add_run("🚀 Interactive Google Colab Notebook & Code Access\n")
+    r_hdr = cp.add_run("Interactive Google Colab Notebook & Code Access\n")
     r_hdr.bold = True
     r_hdr.font.size = Pt(11)
     r_hdr.font.color.rgb = RGBColor(0x1D, 0x4E, 0xD8)
     
     r_colab_desc = cp.add_run(
         "To ensure complete reproducibility and open access, all experimental pipelines, source-disjoint partitioning algorithms, AST model fine-tuning code, "
-        "multi-task consistency loss dynamics, evaluation tables, and colorful graphs are available in our master Google Colab Notebook:\n"
+        "multi-task consistency loss dynamics, evaluation tables, and colorful graphs are available in our Google Colab Notebook:\n"
     )
     r_colab_desc.font.size = Pt(9.5)
     
-    r_link = cp.add_run("🔗 ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb")
+    r_link = cp.add_run("ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb")
     r_link.bold = True
     r_link.font.size = Pt(9.5)
     r_link.font.color.rgb = RGBColor(0x25, 0x63, 0xEB)

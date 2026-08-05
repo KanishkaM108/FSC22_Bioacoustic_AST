@@ -5,17 +5,17 @@
 [![Python 3.10](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 
-Official implementation, complete research paper document (`FSC22_Bioacoustic_AST_Research_Paper.docx`), and Google Colab Notebook for the **Source-Disjoint Audio Spectrogram Transformer (AST)** framework on the Field Sound Classification 2022 (**FSC22**) bioacoustic benchmark dataset.
+Official implementation, research paper document (`FSC22_Bioacoustic_AST_Research_Paper.docx`), and Google Colab Notebook for the **Source-Disjoint Audio Spectrogram Transformer (AST)** framework on the Field Sound Classification 2022 (**FSC22**) bioacoustic benchmark dataset.
 
 ---
 
-## 🚀 Interactive Google Colab Access
+## Interactive Google Colab Access
 
 ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb
 
 ---
 
-## 🌟 Overview
+## Overview
 
 Bioacoustic sound classification is frequently affected by **data leakage** when multi-segment audio recordings or pitch-augmented clip variants derived from the exact same physical recording source span across training and evaluation partitions.
 
@@ -28,7 +28,7 @@ This repository introduces:
 
 ---
 
-## 📚 Literature Survey Summary (Table 1)
+## Literature Survey Summary (Table 1)
 
 *Note: DOI column removed per requested design specifications.*
 
@@ -45,7 +45,7 @@ This repository introduces:
 
 ---
 
-## 📊 Experimental Results & Colorful Visualizations
+## Experimental Results & Visualizations
 
 ### 1. Model Performance Comparison Across Evaluation Protocols
 | Model Architecture / Protocol | Data Split Strategy | Test Accuracy (%) | Macro F1-score (%) | Comparison vs. Base Paper |
@@ -58,7 +58,7 @@ This repository introduces:
 | **Legacy 3-Seed Source-Consistent AST** | Transductive TTA | **98.44%** | **98.42%** | **+5.85%** |
 | **Clean Unseen AST Ensemble (Proposed)** | **Source-Disjoint Unseen Test** | **87.41%** | **87.54%** | **Strict Unseen Benchmark** |
 
-### 2. Colorful Performance Comparison & Ablation Plots
+### 2. Performance Comparison & Ablation Plots
 ![Figure 1 Performance Comparison](outputs/graphs/fig1_performance_comparison.png)
 *Figure 1: FSC22 Bioacoustic Sound Classification Performance Comparison Across Protocols.*
 
@@ -68,7 +68,7 @@ This repository introduces:
 ![Figure 3 Loss Dynamics](outputs/graphs/fig3_loss_dynamics.png)
 *Figure 3: Multi-Task Loss Convergence Dynamics & Consistency Regularization Components.*
 
-### 3. High-Resolution Confusion Matrices
+### 3. Confusion Matrices
 ![Figure 4 Clean Test Confusion Matrix](outputs/graphs/fig4_clean_test_confusion_matrix.png)
 *Figure 4: Locked Source-Disjoint Unseen Test Confusion Matrix (87.41% Accuracy).*
 
@@ -77,7 +77,7 @@ This repository introduces:
 
 ---
 
-## ⚙️ Installation & Usage
+## Installation & Usage
 
 ### 1. Environment Setup
 ```bash
@@ -88,7 +88,7 @@ cd FSC22_Bioacoustic_AST
 pip install -r requirements.txt
 ```
 
-### 2. Run Pipeline & Generate Colorful Graphs
+### 2. Run Pipeline & Generate Graphs
 ```bash
 python generate_colorful_graphs.py
 python create_word_paper.py
@@ -97,7 +97,7 @@ python build_master_colab_notebook.py
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 FSC22_Bioacoustic_AST/
@@ -115,7 +115,7 @@ FSC22_Bioacoustic_AST/
 
 ---
 
-## 📝 Citation & Research Paper
+## Citation & Research Paper
 
 ```bibtex
 @article{kanishka2026source,

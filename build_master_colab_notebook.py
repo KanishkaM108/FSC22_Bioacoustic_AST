@@ -6,19 +6,19 @@ def create_master_notebook():
     nb = nbf.v4.new_notebook()
 
     # Notebook Title & Colab Badge
-    cell1_md = r"""# 🌿 Source-Disjoint Audio Spectrogram Transformers with Consistency Regularization for Bioacoustic Sound Classification
+    cell1_md = r"""# Source-Disjoint Audio Spectrogram Transformers with Consistency Regularization for Bioacoustic Sound Classification
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb)
 [![Paper Docx](https://img.shields.io/badge/Research_Paper-DOCX_Download-2B579A?logo=microsoftword)](https://github.com/KanishkaM108/FSC22_Bioacoustic_AST/raw/main/FSC22_Bioacoustic_AST_Research_Paper.docx)
 
-## 📌 Executive Summary & Abstract
+## Executive Summary & Abstract
 Environmental sound classification in bioacoustic monitoring is frequently plagued by implicit data leakage when multi-segment or pitch-augmented variants of identical recording sources span across training and evaluation splits.
 
 In this notebook, we provide the complete end-to-end implementation for:
 1. **Source-Disjoint Evaluation Protocol**: Outer/Inner `StratifiedGroupKFold` partitioning locking 405 unseen clips across 389 independent source groups.
 2. **Audio Spectrogram Transformer (AST)** fine-tuning with differential learning rates across 8 unfrozen encoder blocks.
 3. **Multi-Task Loss Formulation**: Focal-Smoothed Cross-Entropy + Symmetric Jensen-Shannon Logit Divergence + Cosine Embedding Distance.
-4. **Comprehensive Research Tables & Colorful Visualizations**: Table 1 (Literature Survey without DOI), Table 2 (Partition Statistics), Table 3 (Performance Comparison), Table 4 (Ablation Study), and Figures 1-7.
+4. **Comprehensive Research Tables & Visualizations**: Table 1 (Literature Survey without DOI), Table 2 (Partition Statistics), Table 3 (Performance Comparison), Table 4 (Ablation Study), and Figures 1-7.
 
 ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb
 """
@@ -27,7 +27,7 @@ ColabNotebook: https://colab.research.google.com/github/KanishkaM108/FSC22_Bioac
     # Cell 2: Package Installation
     cell2_code = r"""# Step 1: Environment Setup & Library Installation
 !pip install -q transformers torchaudio scikit-learn matplotlib seaborn pandas numpy librosa timm
-print("✅ Libraries successfully installed!")
+print("Libraries successfully installed!")
 """
     nb.cells.append(nbf.v4.new_code_cell(cell2_code))
 
@@ -61,12 +61,12 @@ def set_seed(seed=42):
 
 set_seed(42)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-print(f"🚀 Execution Device: {device}")
+print(f"Execution Device: {device}")
 """
     nb.cells.append(nbf.v4.new_code_cell(cell3_code))
 
     # Cell 4: Data Partitioning Protocol
-    cell4_md = r"""## 📊 Section 1: FSC22 Source-Disjoint Data Partitioning Protocol
+    cell4_md = r"""## Section 1: FSC22 Source-Disjoint Data Partitioning Protocol
 To audit data leakage, parent audio recording sources (e.g. stem prefix of `17548_A.wav` -> `17548`) are grouped using `StratifiedGroupKFold`. All pitch variants (`original`, `pitch_down_2`, `pitch_up_2`) strictly inherit parent group assignments.
 """
     nb.cells.append(nbf.v4.new_markdown_cell(cell4_md))
@@ -86,7 +86,7 @@ display(df_t2)
     nb.cells.append(nbf.v4.new_code_cell(cell5_code))
 
     # Cell 6: Multi-Task Consistency Loss Definition
-    cell6_md = r"""## 🧠 Section 2: Multi-Task Loss Formulation
+    cell6_md = r"""## Section 2: Multi-Task Loss Formulation
 Combines Focal-Smoothed Cross-Entropy, Symmetric Jensen-Shannon Logit Divergence ($L_{JS}$), and Cosine Embedding Distance ($L_{cos}$):
 $$L_{total} = L_{focal} + \alpha \cdot L_{JS} + \beta \cdot L_{cos}$$
 """
@@ -123,12 +123,12 @@ $$L_{total} = L_{focal} + \alpha \cdot L_{JS} + \beta \cdot L_{cos}$$
         total_loss = focal_loss + self.alpha * js_loss + self.beta * cos_loss
         return total_loss, focal_loss.item(), js_loss.item(), cos_loss.item()
 
-print("✅ FocalConsistencyLoss Module Instantiated Successfully!")
+print("FocalConsistencyLoss Module Instantiated Successfully!")
 """
     nb.cells.append(nbf.v4.new_code_cell(cell7_code))
 
     # Cell 8: Research Tables (Table 1 without DOI, Table 3, Table 4)
-    cell8_md = r"""## 📑 Section 3: Literature Survey, Main Results & Ablation Tables"""
+    cell8_md = r"""## Section 3: Literature Survey, Main Results & Ablation Tables"""
     nb.cells.append(nbf.v4.new_markdown_cell(cell8_md))
 
     cell9_code = r"""# Table 1: Literature Survey (DOI Column Removed)
@@ -174,7 +174,7 @@ display(df_t4)
     nb.cells.append(nbf.v4.new_code_cell(cell9_code))
 
     # Cell 10: Visualizations & Colorful Graphs
-    cell10_md = r"""## 🎨 Section 4: High-Resolution Vibrant Visualizations & Graphs"""
+    cell10_md = r"""## Section 4: High-Resolution Visualizations & Graphs"""
     nb.cells.append(nbf.v4.new_markdown_cell(cell10_md))
 
     cell11_code = r"""# Figure 1: Performance Comparison Bar Chart
