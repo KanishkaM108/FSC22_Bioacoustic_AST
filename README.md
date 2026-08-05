@@ -1,10 +1,5 @@
 # Source-Disjoint Audio Spectrogram Transformers with Consistency Regularization for Bioacoustic Sound Classification
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Results_and_Evaluation.ipynb)
-[![Paper Docx](https://img.shields.io/badge/Research_Paper-DOCX_Download-2B579A?logo=microsoftword)](FSC22_Bioacoustic_AST_Research_Paper.docx)
-[![Python 3.10](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
-
 Official implementation, research paper document (`FSC22_Bioacoustic_AST_Research_Paper.docx`), and Google Colab Notebook for the **Source-Disjoint Audio Spectrogram Transformer (AST)** framework on the Field Sound Classification 2022 (**FSC22**) bioacoustic benchmark dataset.
 
 ---
