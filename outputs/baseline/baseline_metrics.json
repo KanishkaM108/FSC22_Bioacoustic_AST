@@ -1,0 +1,12 @@
+{
+    "model": "Base-paper-style CNN",
+    "seed": 42,
+    "best_epoch": 50,
+    "accuracy": 0.7037037037037037,
+    "macro_precision": 0.7121967764277931,
+    "macro_recall": 0.7037037037037038,
+    "macro_f1": 0.6976877836840687,
+    "parameters": 395259,
+    "peak_vram_mb": 366.51123046875,
+    "base_paper_accuracy": 0.9259
+}

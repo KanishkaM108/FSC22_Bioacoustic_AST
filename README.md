@@ -1,6 +1,18 @@
 # Source-Disjoint Audio Spectrogram Transformers with Consistency Regularization for Bioacoustic Sound Classification
 
-Official implementation of the **Source-Disjoint Audio Spectrogram Transformer (AST)** framework for the Field Sound Classification 2022 (**FSC22**) bioacoustic benchmark dataset.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Master_Notebook.ipynb)
+[![Paper Docx](https://img.shields.io/badge/Research_Paper-DOCX_Download-2B579A?logo=microsoftword)](FSC22_Bioacoustic_AST_Research_Paper.docx)
+[![Python 3.10](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
+
+Official implementation, complete research paper document (`FSC22_Bioacoustic_AST_Research_Paper.docx`), and interactive Google Colab Master Notebook for the **Source-Disjoint Audio Spectrogram Transformer (AST)** framework on the Field Sound Classification 2022 (**FSC22**) bioacoustic benchmark dataset.
+
+---
+
+## 🚀 Open in Google Colab
+All experimental data split generation, Audio Spectrogram Transformer model fine-tuning, consistency regularization multi-task loss dynamics, evaluation tables, and high-resolution colorful visualizations are fully executable in Google Colab:
+
+👉 **[Launch Interactive Google Colab Notebook](https://colab.research.google.com/github/KanishkaM108/FSC22_Bioacoustic_AST/blob/main/FSC22_Bioacoustic_AST_Master_Notebook.ipynb)**
 
 ---
 
@@ -17,67 +29,71 @@ This repository introduces:
 
 ---
 
-## 📊 Experimental Results
+## 📚 Literature Survey Summary (Table 1)
 
-| Experimental Setup | Split Strategy | Accuracy (%) | Macro F1 (%) | Description |
-| :--- | :--- | :---: | :---: | :--- |
-| **FSC22 Base Paper CNN** *(Lin et al., 2022)* | Augmentation-before-split | 92.59% | — | Original baseline reference |
-| **Baseline AST** *(Seed 42)* | Clip-level Random Split | 94.49% | 94.41% | Standard clip-level split |
-| **Cross-Fitted Calibrated AST** | Clip-level Calibrated | 95.06% | 94.98% | Calibrated ensemble |
-| **AST v2 Source-Consistent** *(Seeds 101, 202, 303)* | Transductive TTA | 98.27% | 98.25% | Multi-seed consistency fine-tuned |
-| **Legacy 3-Seed AST** *(Seeds 42, 17, 73)* | Transductive TTA | **98.44%** | **98.42%** | Transductive augmentation-overlap result |
-| **Clean Unseen AST Ensemble (Proposed)** | **Source-Disjoint Unseen Test** | **87.41%** | **87.54%** | **Strict Unseen-Recording Benchmark** |
+*Note: DOI column removed per requested design specifications.*
+
+| Study | Core Mechanism | Main Contribution | Gap Relative to Proposed Work |
+| :--- | :--- | :--- | :--- |
+| **[1] Gong et al. (2021)** | Audio Spectrogram Transformer (AST) | First attention-based audio classifier | Standard clip-level random splits |
+| **[2] Chen et al. (2022)** | AudioMAE (Masked Autoencoders) | Self-supervised masked autoencoder pretraining | High compute, no source group audit |
+| **[3] Chen et al. (2022)** | WavLM Self-Supervised Speech Model | Pretrained speech transformer with relative bias | Speech optimized, background noise memorization |
+| **[4] Kong et al. (2020)** | PANNs Neural Networks | CNN14 & Wavegram audio benchmarks | Acoustic environment leakage across splits |
+| **[5] Fonseca et al. (2021)** | FSD50K Open Dataset & Baselines | Multi-label audio crowdsourced dataset | Lacks consistency regularization |
+| **[6] Lin et al. (2022)** | FSC22 Benchmark Dataset | Introduced 27-class bioacoustic benchmark | Augmentation-before-split protocol |
+| **[7] Tarvainen & Valpola (2017)** | Mean Teacher Consistency Loss | Teacher-student prediction consistency | Lacks bioacoustic frequency-time shift TTA |
+| **[8] Lin et al. (2017)** | Focal Loss for Imbalanced Targets | Modulates loss on hard negative targets | Computer vision focus, needs audio tuning |
 
 ---
 
-## ⚙️ Installation & Setup
+## 📊 Experimental Results & Colorful Visualizations
+
+### 1. Model Performance Comparison Across Evaluation Protocols
+| Model Architecture / Protocol | Data Split Strategy | Test Accuracy (%) | Macro F1-score (%) | Comparison vs. Base Paper |
+| :--- | :--- | :---: | :---: | :---: |
+| **FSC22 Base Paper CNN (Lin et al., 2022)** | Augmentation-before-split | 92.59% | — | Original Baseline |
+| **Re-implemented Base CNN Baseline** | Paper clip split | 70.37% | 69.77% | -22.22% |
+| **Paper-Protocol Baseline AST (Seed 42)** | Paper clip split | 94.49% | 94.41% | +1.90% |
+| **Cross-Fitted Calibrated AST Ensemble** | Paper clip split | 95.06% | 94.98% | +2.47% |
+| **AST v2 Source-Consistent Ensemble** | Transductive TTA | 98.27% | 98.25% | +5.68% |
+| **Legacy 3-Seed Source-Consistent AST** | Transductive TTA | **98.44%** | **98.42%** | **+5.85%** |
+| **Clean Unseen AST Ensemble (Proposed)** | **Source-Disjoint Unseen Test** | **87.41%** | **87.54%** | **Strict Unseen Benchmark** |
+
+### 2. Colorful Performance Comparison & Ablation Plots
+![Figure 1 Performance Comparison](outputs/graphs/fig1_performance_comparison.png)
+*Figure 1: FSC22 Bioacoustic Sound Classification Performance Comparison Across Protocols.*
+
+![Figure 2 Ablation Study](outputs/graphs/fig2_ablation_study.png)
+*Figure 2: Ablation Study on Unfrozen AST Encoder Blocks vs Validation Accuracy, F1 & VRAM Footprint.*
+
+![Figure 3 Loss Dynamics](outputs/graphs/fig3_loss_dynamics.png)
+*Figure 3: Multi-Task Loss Convergence Dynamics & Consistency Regularization Components.*
+
+### 3. High-Resolution Confusion Matrices
+![Figure 4 Clean Test Confusion Matrix](outputs/graphs/fig4_clean_test_confusion_matrix.png)
+*Figure 4: Locked Source-Disjoint Unseen Test Confusion Matrix (87.41% Accuracy).*
+
+![Figure 5 Transductive Confusion Matrix](outputs/graphs/fig5_transductive_confusion_matrix.png)
+*Figure 5: Transductive Source-Consistent Test Confusion Matrix (98.44% Accuracy).*
+
+---
+
+## ⚙️ Installation & Usage
 
 ### 1. Environment Setup
-Clone the repository and create the Conda environment:
-
 ```bash
 git clone https://github.com/KanishkaM108/FSC22_Bioacoustic_AST.git
 cd FSC22_Bioacoustic_AST
-
-# Create and activate environment
-conda create -n fsc22_research python=3.10 -y
-conda activate fsc22_research
 
 # Install dependencies
 pip install -r requirements.txt
 ```
 
----
-
-## 🚀 Usage Guide
-
-### 1. Prepare Source-Disjoint Protocol
-Generate the leakage-free source-grouped manifest and lock the test split:
-
+### 2. Run Pipeline & Generate Colorful Graphs
 ```bash
-python src/prepare_clean_grouped_protocol.py
-```
-
-### 2. Train Clean AST Models
-Train 3 independent seeds (101, 202, 303) on source-disjoint partitions:
-
-```bash
-python src/train_ast_v2_source_consistent.py --seed 101 --epochs 40 --unfrozen-blocks 8 --tag clean_ast_v1
-python src/train_ast_v2_source_consistent.py --seed 202 --epochs 40 --unfrozen-blocks 8 --tag clean_ast_v1
-python src/train_ast_v2_source_consistent.py --seed 303 --epochs 40 --unfrozen-blocks 8 --tag clean_ast_v1
-```
-
-Or run the full automated pipeline via batch script:
-
-```bat
-run_clean_unseen_training.bat
-```
-
-### 3. Evaluate Locked Test Split
-Evaluate the 3-seed ensemble on the locked, source-disjoint unseen test set:
-
-```bash
-python src/evaluate_clean_ast_ensemble.py --tag clean_ast_v1
+python generate_colorful_graphs.py
+python create_word_paper.py
+python build_master_colab_notebook.py
 ```
 
 ---
@@ -86,23 +102,20 @@ python src/evaluate_clean_ast_ensemble.py --tag clean_ast_v1
 
 ```text
 FSC22_Bioacoustic_AST/
-├── src/
-│   ├── prepare_clean_grouped_protocol.py   # Source-disjoint StratifiedGroupKFold splitter
-│   ├── train_ast_v2_source_consistent.py     # AST fine-tuning with focal & consistency loss
-│   ├── evaluate_clean_ast_ensemble.py      # Locked unseen test set evaluator
-│   ├── evaluate_source_consistent_ast_v2.py # Transductive source-consistent evaluator
-│   └── train_baseline.py                   # Baseline CNN training script
-├── outputs/                                # Manifests, metrics, and confusion matrix plots
-├── run_clean_unseen_training.bat           # Automated training & evaluation pipeline
-├── requirements.txt                        # Python dependencies list
-└── README.md                               # Project documentation
+├── FSC22_Bioacoustic_AST_Master_Notebook.ipynb  # Complete Google Colab Master Notebook
+├── FSC22_Bioacoustic_AST_Research_Paper.docx    # Ready-to-submit Word Document Research Paper
+├── generate_colorful_graphs.py                  # High-res colorful graph generator
+├── create_word_paper.py                         # Word document builder with embedded figures & tables
+├── build_master_colab_notebook.py              # Google Colab notebook builder
+├── src/                                         # PyTorch model training & evaluation scripts
+├── outputs/graphs/                              # High-resolution PNG figures & plots
+├── requirements.txt                             # Python requirements
+└── README.md                                    # Project documentation
 ```
 
 ---
 
 ## 📝 Citation & Research Paper
-
-If you find this codebase or protocol design useful in your research, please cite our manuscript:
 
 ```bibtex
 @article{kanishka2026source,

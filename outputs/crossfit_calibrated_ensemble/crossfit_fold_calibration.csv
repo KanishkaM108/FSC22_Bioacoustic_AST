@@ -1,0 +1,6 @@
+fold,calibration_rows,evaluation_rows,calibration_original_recordings,evaluation_original_recordings,selected_seed,selected_confidence_threshold,calibration_accuracy,calibration_overrides,evaluation_overrides,evaluation_accuracy
+1,972,243,795,200,seed42,0.45,0.9547325102880658,3,2,0.9382716049382716
+2,972,243,797,198,seed42,0.4,0.9537037037037037,4,0,0.9382716049382716
+3,972,243,796,199,seed42,0.45,0.9506172839506173,4,1,0.9547325102880658
+4,972,243,796,199,seed42,0.45,0.9537037037037037,5,0,0.9423868312757202
+5,972,243,796,199,seed42,0.45,0.9444444444444444,4,1,0.9794238683127572

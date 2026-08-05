@@ -1,0 +1,11 @@
+{
+    "sample_rate": 22050,
+    "duration_seconds": 5,
+    "n_mels": 128,
+    "n_fft": 2048,
+    "hop_length": 512,
+    "feature_shape": [
+        128,
+        216
+    ]
+}

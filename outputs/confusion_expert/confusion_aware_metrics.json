@@ -1,0 +1,15 @@
+{
+    "model": "Confusion-Aware Hierarchical AST",
+    "selection_rule": "highest five-fold pair-training CV macro-F1",
+    "selected_expert": "Shrinkage LDA",
+    "primary_accuracy": 0.9448559670781893,
+    "accuracy": 0.9407407407407408,
+    "macro_precision": 0.9414558420607345,
+    "macro_recall": 0.9407407407407408,
+    "macro_f1": 0.9398433157275693,
+    "primary_correct_predictions": 1148,
+    "final_correct_predictions": 1143,
+    "additional_correct_predictions": -5,
+    "test_samples": 1215,
+    "expert_activated_samples": 83
+}

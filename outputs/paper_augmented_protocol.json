@@ -1,0 +1,13 @@
+{
+    "protocol": "augmentation before stratified 80/20 split",
+    "pitch_steps": [
+        -2.0,
+        2.0
+    ],
+    "random_seed": 42,
+    "total_samples": 6075,
+    "training_samples": 4860,
+    "testing_samples": 1215,
+    "overlapping_original_ids": 980,
+    "additional_cache_size_mb": 1012.99
+}

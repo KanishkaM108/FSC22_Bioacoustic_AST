@@ -1,0 +1,10 @@
+{
+    "selection_rule": "highest three-fold training CV macro-F1",
+    "selected_method": "Logistic Regression",
+    "accuracy": 0.8888888888888888,
+    "macro_precision": 0.8905142303835114,
+    "macro_recall": 0.8888888888888891,
+    "macro_f1": 0.8858468797933431,
+    "correct_predictions": 360,
+    "test_samples": 405
+}

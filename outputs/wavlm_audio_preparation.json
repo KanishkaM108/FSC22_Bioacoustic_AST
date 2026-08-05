@@ -1,0 +1,16 @@
+{
+    "sample_rate": 16000,
+    "duration_seconds": 5,
+    "samples_per_waveform": 80000,
+    "pitch_steps": {
+        "pitch_down_2": -2.0,
+        "pitch_up_2": 2.0
+    },
+    "original_recordings": 2025,
+    "cached_waveforms": 6075,
+    "valid_cached_waveforms": 6075,
+    "training_samples": 4860,
+    "testing_samples": 1215,
+    "cache_size_mb": 927.71,
+    "output_manifest": "C:\\Users\\Kanishka\\Downloads\\FSC22_Research\\outputs\\wavlm_augmented_split_seed42.csv"
+}

@@ -1,0 +1,13 @@
+{
+    "model": "AST Stage 2 - top six blocks",
+    "seed": 42,
+    "best_stage2_epoch": 0,
+    "accuracy": 0.8987654320987655,
+    "macro_precision": 0.9000276653871425,
+    "macro_recall": 0.8987654320987654,
+    "macro_f1": 0.8963135629611756,
+    "total_parameters": 86209563,
+    "trainable_parameters": 42551067,
+    "peak_vram_mb": 1403.9912109375,
+    "base_paper_accuracy": 0.9259
+}

@@ -1,0 +1,15 @@
+{
+    "model": "Source-consistency-regularized Audio Spectrogram Transformer",
+    "seed": 101,
+    "best_epoch": 25,
+    "accuracy": 0.9522633744855967,
+    "macro_precision": 0.9535420719906216,
+    "macro_recall": 0.9522633744855967,
+    "macro_f1": 0.951359879347706,
+    "unfrozen_transformer_blocks": 6,
+    "total_parameters": 86209563,
+    "trainable_parameters": 42551067,
+    "peak_vram_mb": 1866.50439453125,
+    "model_path": "C:\\Users\\Kanishka\\Downloads\\FSC22_Research\\models\\fsc22_ast_v2_seed101.pt",
+    "protocol_note": "Metrics use the repeatedly inspected paper-compatible development partition and are not a new locked-test estimate."
+}

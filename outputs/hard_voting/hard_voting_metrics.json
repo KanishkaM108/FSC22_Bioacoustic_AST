@@ -1,0 +1,25 @@
+{
+    "model": "Three-seed AST hard-majority voting",
+    "seeds": [
+        42,
+        17,
+        73
+    ],
+    "rule": "Class receiving at least two seed votes; equal-probability soft ensemble used only when all three seeds predict different classes",
+    "soft_voting_accuracy": 0.9473251028806584,
+    "soft_voting_macro_f1": 0.946391223791202,
+    "accuracy": 0.9465020576131687,
+    "macro_precision": 0.9471542268552708,
+    "macro_recall": 0.9465020576131687,
+    "macro_f1": 0.9457322696255245,
+    "correct_predictions": 1150,
+    "test_samples": 1215,
+    "majority_rows": 1213,
+    "three_way_tie_rows": 2,
+    "changed_predictions": 7,
+    "corrected_predictions": 2,
+    "newly_wrong_predictions": 3,
+    "net_additional_correct": -1,
+    "target_accuracy": 0.95,
+    "target_reached": false
+}

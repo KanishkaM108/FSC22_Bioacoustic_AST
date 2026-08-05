@@ -1,0 +1,16 @@
+{
+    "model": "Clean source-grouped source-consistency-regularized AST",
+    "seed": 101,
+    "best_epoch": 13,
+    "accuracy": 0.8765432098765432,
+    "macro_precision": 0.888528960751183,
+    "macro_recall": 0.8765432098765432,
+    "macro_f1": 0.8735491072660724,
+    "unfrozen_transformer_blocks": 8,
+    "total_parameters": 86209563,
+    "trainable_parameters": 56726811,
+    "peak_vram_mb": 2345.72900390625,
+    "model_path": "C:\\Users\\Kanishka\\Downloads\\FSC22_Research\\models\\fsc22_clean_ast_v1_seed101.pt",
+    "manifest": "C:\\Users\\Kanishka\\Downloads\\FSC22_Research\\outputs\\clean_grouped_manifest_seed42.csv",
+    "protocol_note": "Metrics are validation-only. Source groups are disjoint from training, and the locked test split was not loaded."
+}

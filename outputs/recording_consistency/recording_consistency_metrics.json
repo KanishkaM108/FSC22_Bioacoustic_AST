@@ -1,0 +1,26 @@
+{
+    "model": "Recording-consistent three-seed AST soft-voting ensemble",
+    "seeds": [
+        42,
+        17,
+        73
+    ],
+    "aggregation_rule": "Mean probabilities across test-partition pitch variants sharing an original recording ID; singleton rows unchanged",
+    "original_ensemble_accuracy": 0.9473251028806584,
+    "original_ensemble_macro_f1": 0.9463912237912021,
+    "accuracy": 0.9465020576131687,
+    "macro_precision": 0.9470232830741655,
+    "macro_recall": 0.946502057613169,
+    "macro_f1": 0.945626318312636,
+    "original_correct_predictions": 1151,
+    "consistent_correct_predictions": 1150,
+    "test_samples": 1215,
+    "multi_variant_recordings": 205,
+    "multi_variant_rows": 425,
+    "changed_predictions": 13,
+    "corrected_predictions": 4,
+    "newly_wrong_predictions": 5,
+    "net_additional_correct": -1,
+    "target_accuracy": 0.95,
+    "target_reached": false
+}

@@ -1,0 +1,39 @@
+{
+    "model": "Grouped cross-fitted calibrated three-seed AST ensemble",
+    "base_ensemble": "Equal-probability soft voting, seeds 42/17/73",
+    "calibration_method": "Five-fold StratifiedGroupKFold restricted Axe/WoodChop low-confidence resolver",
+    "grouping_key": "Original Dataset File Name",
+    "random_seed": 42,
+    "number_of_folds": 5,
+    "candidate_seed_columns": [
+        "seed42_prediction",
+        "seed17_prediction",
+        "seed73_prediction"
+    ],
+    "candidate_confidence_thresholds": [
+        0.3,
+        0.35,
+        0.4,
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7
+    ],
+    "soft_voting_accuracy": 0.9473251028806584,
+    "soft_voting_macro_f1": 0.946391223791202,
+    "accuracy": 0.9506172839506173,
+    "macro_precision": 0.9511498911209523,
+    "macro_recall": 0.9506172839506173,
+    "macro_f1": 0.9498066074802295,
+    "correct_predictions": 1155,
+    "test_samples": 1215,
+    "changed_predictions": 4,
+    "corrected_predictions": 4,
+    "newly_wrong_predictions": 0,
+    "net_additional_correct": 4,
+    "target_accuracy": 0.95,
+    "target_reached": true,
+    "protocol_warning": "This is a cross-fitted calibration result within the paper-compatible augmentation-overlap protocol, not the clean original-recording protocol."
+}

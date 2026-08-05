@@ -1,0 +1,19 @@
+{
+    "model": "Equal-probability soft-voting ensemble of three AST models",
+    "seeds": [
+        42,
+        17,
+        73
+    ],
+    "accuracy": 0.9473251028806584,
+    "macro_precision": 0.9475343708387653,
+    "macro_recall": 0.9473251028806585,
+    "macro_f1": 0.9463912237912021,
+    "correct_predictions": 1151,
+    "test_samples": 1215,
+    "overlapping_original_ids": 980,
+    "base_paper_accuracy": 0.9259,
+    "single_seed42_accuracy": 0.9448559670781893,
+    "target_accuracy": 0.95,
+    "target_reached": false
+}

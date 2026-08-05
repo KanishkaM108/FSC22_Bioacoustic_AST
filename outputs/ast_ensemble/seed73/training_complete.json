@@ -1,0 +1,9 @@
+{
+    "seed": 73,
+    "best_epoch": 19,
+    "best_selection_macro_f1": 0.9413309608261962,
+    "total_parameters": 86209563,
+    "trainable_parameters": 28375323,
+    "peak_vram_mb": 1374.4814453125,
+    "model_path": "C:\\Users\\Kanishka\\Downloads\\FSC22_Research\\models\\fsc22_ast_paper_protocol_seed73.pt"
+}

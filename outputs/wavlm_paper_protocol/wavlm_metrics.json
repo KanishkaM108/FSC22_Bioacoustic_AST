@@ -1,0 +1,18 @@
+{
+    "model": "WavLM Base+ paper-protocol classifier",
+    "pretrained_checkpoint": "microsoft/wavlm-base-plus",
+    "seed": 42,
+    "best_epoch": 16,
+    "unfrozen_encoder_blocks": 4,
+    "accuracy": 0.39012345679012345,
+    "macro_precision": 0.4350124035623935,
+    "macro_recall": 0.39012345679012345,
+    "macro_f1": 0.36671152273157714,
+    "correct_predictions": 474,
+    "test_samples": 1215,
+    "total_parameters": 94585739,
+    "trainable_parameters": 28558955,
+    "peak_vram_mb": 1340.61181640625,
+    "base_paper_accuracy": 0.9259,
+    "protocol_warning": "Paper-compatible augmentation-overlap protocol; not clean unseen-recording generalization."
+}

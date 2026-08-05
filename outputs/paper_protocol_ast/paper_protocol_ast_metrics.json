@@ -1,0 +1,15 @@
+{
+    "model": "AST using augmentation-before-split protocol",
+    "seed": 42,
+    "best_epoch": 12,
+    "accuracy": 0.9448559670781893,
+    "macro_precision": 0.9460315890341425,
+    "macro_recall": 0.9448559670781895,
+    "macro_f1": 0.944126671929461,
+    "overlapping_original_ids": 980,
+    "total_parameters": 86209563,
+    "trainable_parameters": 28375323,
+    "peak_vram_mb": 1375.6884765625,
+    "base_paper_accuracy": 0.9259,
+    "clean_protocol_ast_accuracy": 0.9012
+}

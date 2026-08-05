@@ -1,0 +1,12 @@
+{
+    "checkpoint": "MIT/ast-finetuned-audioset-10-10-0.4593",
+    "sample_rate": 16000,
+    "duration_seconds": 5.0,
+    "feature_shape": [
+        1024,
+        128
+    ],
+    "feature_dtype": "float16",
+    "number_of_files": 2025,
+    "cache_size_mb": 506.5
+}

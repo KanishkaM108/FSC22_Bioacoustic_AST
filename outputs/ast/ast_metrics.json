@@ -1,0 +1,14 @@
+{
+    "model": "Audio Spectrogram Transformer",
+    "pretrained_checkpoint": "MIT/ast-finetuned-audioset-10-10-0.4593",
+    "seed": 42,
+    "best_epoch": 19,
+    "accuracy": 0.9012345679012346,
+    "macro_precision": 0.9028766682361454,
+    "macro_recall": 0.9012345679012347,
+    "macro_f1": 0.8990097457339868,
+    "total_parameters": 86209563,
+    "trainable_parameters": 14199579,
+    "peak_vram_mb": 895.21826171875,
+    "base_paper_accuracy": 0.9259
+}
